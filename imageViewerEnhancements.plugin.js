@@ -207,7 +207,7 @@ var imageViewerEnhancements = function () {
             frag.appendChild(statusLine);
             frag.appendChild(imgLoading);
             document.getElementsByClassName('modal-image')[0].prependChild(frag);
-            $(".modal-image a").attr("href", links[currentImage].sourceUrl);
+            $(".download-button").attr("href", links[currentImage].sourceUrl);
             statusLine.setText(currentImage + 1, links.length);
         }
     };
@@ -240,6 +240,7 @@ var imageViewerEnhancements = function () {
         statusLine.setText(currentImage + 1, links.length);
         modalDialog.prependChild(statusLine);
         leftAndRightButtons.addTo(modalDialog);
+        $(".download-button").attr("href", links[currentImage].sourceUrl);
         window.addEventListener("keydown", keyListener);
     };
 
