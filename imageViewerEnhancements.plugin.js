@@ -2,7 +2,7 @@
 
 var imageViewerEnhancements = function () {
     let that = this;
-    const DEBUG = true;
+    const DEBUG = false;
     let imageViewerVisible = false;
     let currentImage = -1;
     let links = [];
