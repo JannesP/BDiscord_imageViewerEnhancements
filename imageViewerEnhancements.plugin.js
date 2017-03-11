@@ -245,6 +245,7 @@ var imageViewerEnhancements = function () {
 
     let dehance = function () {
         window.removeEventListener("keydown", keyListener);
+        if (currentImageLoadHandler != null) currentImageLoadHandler.remove();
         links = [];
         currentImage = -1;
     }
