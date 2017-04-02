@@ -2,7 +2,7 @@
 
 var imageViewerEnhancements = function () {
     let that = this;
-    const DEBUG = false;
+    const DEBUG = true;
     let imageViewerVisible = false;
     let currentImage = -1;
     let links = [];
@@ -147,7 +147,11 @@ var imageViewerEnhancements = function () {
         }
     };
 
-
+	let scrollToMessage = function(msg) {
+		//$(".messages")[0].scrollTop= $($(".message-group")[10]).offset().top;
+		log("Offset: " + $(msg).offset().top, msg, "ScrollTop: " + $(".messages")[0].scrollTop);
+		$(".messages")[0].scrollTop += $(msg).offset().top - 50;
+	};
 
     let updateCurrentImage = function () {
         if (imageViewerVisible) {
@@ -209,6 +213,7 @@ var imageViewerEnhancements = function () {
             document.getElementsByClassName('modal-image')[0].prependChild(frag);
             $(".download-button").attr("href", links[currentImage].sourceUrl);
             statusLine.setText(currentImage + 1, links.length);
+			scrollToMessage(links[currentImage].message);
         }
     };
 
@@ -228,6 +233,7 @@ var imageViewerEnhancements = function () {
                     break;
             }
             links[i].imageTag = images[i];
+			links[i].message = $(images[i]).closest(".message-group");
         }
         let modalDialog = document.getElementsByClassName('modal-image')[0];
         let currentSourceLink = modalDialog.childNodes[1].getAttribute("href");
@@ -249,6 +255,6 @@ var imageViewerEnhancements = function () {
         if (currentImageLoadHandler != null) currentImageLoadHandler.remove();
         links = [];
         currentImage = -1;
-    }
+    };
 
 };
